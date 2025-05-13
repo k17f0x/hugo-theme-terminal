@@ -1,4 +1,17 @@
 <header class="header">
+  {{ with $.Site.Params.Logo.logoImg }}
+  <style>
+    .header__logo::before {
+      --image-height: calc(var(--line-height) + 10px);
+      --image-width: calc(var(--image-height) + 5px);
+      background-image: url("{{.}}");
+      background-size: var(--image-height), var(--image-width);
+      width: var(--image-width);
+      height: var(--image-height);
+      content: "";
+    }
+  </style>
+  {{ end }}
   <div class="header__inner">
     <div class="header__logo">
       {{ partial "logo.html" . }}
